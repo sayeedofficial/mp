@@ -1,0 +1,38 @@
+.pcard {
+  text-align: center;
+  width: 300px;
+  padding: 10px;
+  margin: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: 0.3s;
+  background-color: white;
+}
+/* .pcard h1 {
+    background-color:  #ffcc5c;
+    border-radius:5px;
+  } */
+.pcard h2 {
+  background-color: #96ceb4;
+  color: white;
+  border-radius: 5px;
+}
+.pcard h5 {
+  padding: 0px;
+}
+.pcard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.pcard a {
+  color: whitesmoke;
+}
+.pcard a:hover {
+  color: rgb(255, 255, 255);
+}
+.pcard img {
+  text-align: center;
+  background: white;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}

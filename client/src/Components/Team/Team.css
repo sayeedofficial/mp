@@ -1,0 +1,9 @@
+.project-cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+}
