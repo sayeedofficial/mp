@@ -1,60 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { toast } from "react-toastify";
+import axios from "axios";
+import BlinkRate from "./Blink";
 import SaveIcon from "@mui/icons-material/Save";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Try.css";
-class Try extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      fileUrl: "",
-    };
+toast.configure();
 
-    this.handleFileUpload = this.handleFileUpload.bind(this);
-    this.notify = this.notify.bind(this);
-  }
+function Try() {
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
 
-  handleFileUpload(ev) {
-    ev.preventDefault();
-    const data = new FormData();
-    data.append("file", this.uploadInput.files[0]);
-    fetch("http://localhost:5000/upload", {
-      method: "POST",
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ fileUrl: `http://localhost:5000/${body.file}` });
-      });
-    });
-  }
+  const saveFile = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
 
-  notify() {
-    toast("File Uploaded and Sent Successfully");
-  }
+  const uploadFile = async (e) => {
+    toast("File Uploaded Successfully");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    try {
+      const res = await axios.post("http://localhost:5500/upload", formData);
+      console.log(res);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
 
-  render() {
-    return (
-      <form onSubmit={this.handleFileUpload} className="file-form">
-        <div>
-          <input
-            ref={(ref) => {
-              this.uploadInput = ref;
-            }}
-            type="file"
-          />
-        </div>
+  return (
+    <div className="fileform-container">
+      <input type="file" onChange={saveFile} />
 
-        <br />
-        <div>
-          <Button onClick={this.notify} type="submit" variant="contained">
-            <SaveIcon />{" "} Upload
-          </Button>
-        </div>
-      </form>
-    );
-  }
+      <Button
+        size="small"
+        startIcon={<SaveIcon />}
+        variant="contained"
+        onClick={uploadFile}
+      >
+        Upload
+      </Button>
+      <br />
+      <br />
+      <br />
+
+      <BlinkRate />
+    </div>
+  );
 }
 
 export default Try;

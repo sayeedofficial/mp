@@ -1,0 +1,11 @@
+.Disease-form {
+  text-align: center;
+}
+
+.Disease-form input {
+  padding: 10px;
+  margin: 10px 0px;
+ 
+  border-radius:10px
+  
+}
