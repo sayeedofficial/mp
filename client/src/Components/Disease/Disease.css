@@ -1,11 +1,19 @@
-.Disease-form {
-  text-align: center;
+.disease-form-container {
+	padding-top: 5px;
+	padding-left: 15px;
+	margin-right: 800px;
+}
+label {
+	margin-right: 10px;
+}
+input,
+select {
+	margin: 10px;
+	padding: 5px;
 }
 
-.Disease-form input {
-  padding: 10px;
-  margin: 10px 0px;
- 
-  border-radius:10px
-  
+@media only screen and (max-width: 500px) {
+	.disease-form-container {
+		margin-right: 0px;
+	}
 }
