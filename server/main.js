@@ -50,7 +50,7 @@ app.post("/upload", (req, res) => {
       console.log(err);
       return;
     }
-    getBlink();
+
   });
 });
 
