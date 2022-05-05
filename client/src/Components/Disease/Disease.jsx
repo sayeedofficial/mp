@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import { Button } from "@mui/material";
 import "./Disease.css";
 
@@ -29,6 +29,15 @@ class Disease extends React.Component {
 	handleSubmit(evt) {
 		evt.preventDefault();
 		console.log(this.state);
+		const url = "http://localhost:5500/disease";
+		axios
+			.post(url, this.state)
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}
 
 	render() {
