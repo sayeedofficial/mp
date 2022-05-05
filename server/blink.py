@@ -39,7 +39,7 @@ fig = go.Figure(data=go.Scatter(
 voltage = one_minute_voltage
 
 indices = find_peaks(voltage,threshold=0,distance = 50)[0]
-peaks = list(i for i in indices if voltage[i]>3.6 and voltage[i]<4.3)
+peaks = list(i for i in indices if voltage[i]>3.6 and voltage[i]<5)
 
 # fig = go.Figure()
 # fig.add_trace(go.Scatter(

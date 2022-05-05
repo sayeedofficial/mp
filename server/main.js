@@ -17,7 +17,7 @@ app.use(
 	})
 );
 
-function getBlink() {
+function DetectDisease(data) {
 	var sys = require("util"),
 		spawn = require("child_process").spawn,
 		dummy = spawn("python", ["blink.py"]);
@@ -56,7 +56,36 @@ app.post("/upload", (req, res) => {
 });
 
 app.post("/disease", (req, res) => {
-	console.log(req.body);
+	const {
+		age,
+		gender,
+		blinkrate,
+		redness,
+		burning_sensation,
+		screen_time,
+		scratchy_level,
+		blurred_vision,
+		dryness,
+	} = req.body;
+	console.log(
+		age +
+			" " +
+			gender +
+			" " +
+			blinkrate +
+			" " +
+			redness +
+			" " +
+			burning_sensation +
+			" " +
+			screen_time +
+			" " +
+			scratchy_level +
+			" " +
+			blurred_vision +
+			" " +
+			dryness
+	);
 });
 
 const PORT = 5500;

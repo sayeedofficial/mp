@@ -7,7 +7,7 @@ function TeamCard({ name, image, linkedin, about }) {
   return (
     <div className="pcard">
       <h1> {name}</h1>
-      <img src={image} alt=" " srcset="" />
+      <img src={image} alt=" " srcSet="" />
       <br />
       {/* <p>
         {" "}
