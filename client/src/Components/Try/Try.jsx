@@ -33,7 +33,7 @@ function Try() {
 
   return (
     <div className="fileform-container">
-      <input type="file" onChange={saveFile} />
+      <input type="file" onChange={saveFile} className="custom-file-input" />
 
       <Button
         size="small"
