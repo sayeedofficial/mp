@@ -34,7 +34,7 @@ function Try() {
 	return (
 		<div>
 			<div className="fileform-container">
-      <h4>Upload the Text File Containing Blink and Voltage Values </h4>
+      <h4>Upload the Text File Containing Time and Voltage Values </h4>
 				<input type="file" onChange={saveFile} className="custom-file-input" />
 
 				<Button
