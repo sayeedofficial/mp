@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fileupload = require("express-fileupload");
+const { PythonShell } = require("python-shell");
 const app = express();
 
 app.use(cors());
@@ -17,29 +18,25 @@ app.use(
 	})
 );
 
-function DetectDisease(data) {
-	var sys = require("util"),
-		spawn = require("child_process").spawn,
-		dummy = spawn("python", ["blink.py"]);
 
-	dummy.stdout.on("data", function (data) {
-		const ans = data.toString();
-		console.log(ans);
+
+
+let blinkCount = 0;
+function getBlink() {
+	let pyshell = new PythonShell("blink.py");
+	pyshell.send("hello");
+
+	pyshell.on("message", function (message) {
+		blinkCount = message;
 	});
 }
 
 app.get("/blinkcount", (req, res) => {
-	var sys = require("util"),
-		spawn = require("child_process").spawn,
-		dummy = spawn("python", ["blink.py"]);
-
-	dummy.stdout.on("data", function (data) {
-		const ans = data.toString();
-		console.log(ans);
-		setTimeout(() => {
-			res.send(ans);
-		}, 2000);
-	});
+	getBlink();
+	setTimeout(() => {
+		console.log(blinkCount);
+		res.send(blinkCount);
+	}, 3000);
 });
 
 app.post("/upload", (req, res) => {
