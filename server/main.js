@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
 const fileupload = require("express-fileupload");
 const { PythonShell } = require("python-shell");
 const app = express();
@@ -17,9 +18,6 @@ app.use(
 		optionSuccessStatus: 200,
 	})
 );
-
-
-
 
 let blinkCount = 0;
 function getBlink() {
@@ -40,6 +38,9 @@ app.get("/blinkcount", (req, res) => {
 });
 
 app.post("/upload", (req, res) => {
+	if (!fs.existsSync("./files")) {
+		fs.mkdirSync("./files");
+	}
 	const newpath = __dirname + "/files/";
 	const file = req.files.file;
 	const filename = file.name;

@@ -57,13 +57,7 @@ This Application Helps You to Find Number of Blinks Made Per Minute
  cd server
 ```
 
-
-#### Step 6 
-```
- mkdir files  
-```
-
-#### Step 7
+#### Step 6
 ```
  npm install  
 ```
