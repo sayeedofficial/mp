@@ -35,7 +35,7 @@ app.get("/blinkcount", (req, res) => {
 	getBlink();
 	setTimeout(() => {
 		console.log(blinkCount);
-		res.send(blinkCount);
+		res.status(200).send(blinkCount.toString());
 	}, 3000);
 });
 
