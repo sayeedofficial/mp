@@ -24,7 +24,7 @@ const Navbar = () => {
 				<li>
 					<Link to="/disease">
 						{" "}
-						<i className="fas fa-circle-check"></i> Disease
+						<i className="fa-solid fa-briefcase-medical"></i> Disease
 					</Link>
 				</li>
 
