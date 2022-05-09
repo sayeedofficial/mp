@@ -23,7 +23,7 @@ app.use(
 // Funtion That Executes The Script In Backend and gets blinkCount result
 let blinkCount = 0;
 function getBlink() {
-	let pyshell = new PythonShell("Blink.py");
+	let pyshell = new PythonShell("blink.py");
 	pyshell.send("hello");
 
 	pyshell.on("message", function (message) {
