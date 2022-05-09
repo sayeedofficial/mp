@@ -23,7 +23,7 @@ app.use(
 // Funtion That Executes The Script In Backend and gets blinkCount result
 let blinkCount = 0;
 function getBlink() {
-	let pyshell = new PythonShell("blink.py");
+	let pyshell = new PythonShell("Blink.py");
 	pyshell.send("hello");
 
 	pyshell.on("message", function (message) {
@@ -62,7 +62,7 @@ app.post("/upload", (req, res) => {
 
 let diseaseResult = " ";
 function checkDisease(person) {
-	let pyshell = new PythonShell("disease.py");
+	let pyshell = new PythonShell("Disease.py");
 	pyshell.send(JSON.stringify(person));
 
 	pyshell.on("message", function (message) {

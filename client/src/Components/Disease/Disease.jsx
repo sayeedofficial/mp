@@ -131,7 +131,7 @@ class Disease extends React.Component {
 					<input
 						onChange={this.handleChange}
 						name="screen_time"
-						type="text"
+						type="number"
 						value={this.state.screen_time}
 					/>
 
