@@ -16,21 +16,22 @@ const Navbar = () => {
 					</Link>
 				</li>
 				<li>
-					<Link to="/disease">
-						{" "}
-						<i className="fas fa-circle-check"></i> Disease
-					</Link>
-				</li>
-				<li>
 					<Link to="/try">
 						{" "}
 						<i className="fas fa-vial"></i> Try
 					</Link>
 				</li>
 				<li>
+					<Link to="/disease">
+						{" "}
+						<i className="fas fa-circle-check"></i> Disease
+					</Link>
+				</li>
+
+				<li>
 					<Link to="/team">
 						{" "}
-					<i className="fa-solid fa-user"></i> Team
+						<i className="fa-solid fa-user"></i> Team
 					</Link>
 				</li>
 			</ul>

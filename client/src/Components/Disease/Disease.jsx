@@ -1,7 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { Button } from "@mui/material";
+import Precautions from "./Precautions";
 import "./Disease.css";
+
+toast.configure();
 
 class Disease extends React.Component {
 	constructor(props) {
@@ -16,6 +20,7 @@ class Disease extends React.Component {
 			scratchy_level: " ",
 			blurred_vision: " ",
 			dryness: " ",
+			diseaseResult: "None",
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,29 +31,34 @@ class Disease extends React.Component {
 			[event.target.name]: event.target.value,
 		});
 	}
-	handleSubmit(evt) {
+
+	async handleSubmit(evt) {
+		toast("Details are sent, Please wait!");
+		let recRes = "";
 		evt.preventDefault();
-		console.log(this.state);
 		const url = "http://localhost:5500/disease";
-		axios
-			.post(url, this.state)
-			.then((res) => {
-				console.log(res.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		const response = await axios.post(url, this.state);
+		recRes = response.data;
+		console.log(recRes);
+		this.setState({
+			diseaseResult: response.data,
+		});
+		console.log(this.state);
 	}
 
 	render() {
 		return (
 			<div className="disease-form-container">
+				{<h2> Result {this.state.diseaseResult}</h2>}
+				<div className="disease-result-container">
+					{this.state.diseaseResult === "Yes" ? <Precautions /> : <Fragment />}
+				</div>
 				<form onSubmit={this.handleSubmit}>
 					<label>Age</label>
 					<input
 						onChange={this.handleChange}
 						name="age"
-						type="text"
+						type="number"
 						value={this.state.age}
 					/>
 
@@ -69,7 +79,7 @@ class Disease extends React.Component {
 					<label>Blink Rate</label>
 					<input
 						name="blinkrate"
-						type="text"
+						type="number"
 						value={this.state.blinkrate}
 						onChange={this.handleChange}
 					/>
@@ -160,7 +170,7 @@ class Disease extends React.Component {
 						type="submit"
 						value="Submit"
 					>
-						Check
+						Submit
 					</Button>
 				</form>
 			</div>

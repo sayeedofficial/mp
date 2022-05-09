@@ -35,7 +35,7 @@ function Try() {
 		<div>
 			<div className="fileform-container">
       <h4>Upload the Text File Containing Time and Voltage Values </h4>
-				<input type="file" onChange={saveFile} className="custom-file-input" />
+				<input accept={[".txt"]} type="file" onChange={saveFile} className="custom-file-input" />
 
 				<Button
 					size="small"

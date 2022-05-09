@@ -19,6 +19,8 @@ app.use(
 	})
 );
 
+
+// Funtion That Executes The Script In Backend and gets blinkCount result
 let blinkCount = 0;
 function getBlink() {
 	let pyshell = new PythonShell("blink.py");
@@ -28,7 +30,7 @@ function getBlink() {
 		blinkCount = message;
 	});
 }
-
+//Get Blink Count Result
 app.get("/blinkcount", (req, res) => {
 	getBlink();
 	setTimeout(() => {
@@ -37,6 +39,7 @@ app.get("/blinkcount", (req, res) => {
 	}, 3000);
 });
 
+//upload file from client
 app.post("/upload", (req, res) => {
 	if (!fs.existsSync("./files")) {
 		fs.mkdirSync("./files");
@@ -53,6 +56,21 @@ app.post("/upload", (req, res) => {
 	});
 });
 
+
+
+
+
+let diseaseResult = " ";
+function checkDisease(person) {
+	let pyshell = new PythonShell("disease.py");
+	pyshell.send(JSON.stringify(person));
+
+	pyshell.on("message", function (message) {
+		console.log(message);
+		diseaseResult = message;
+	});
+}
+
 app.post("/disease", (req, res) => {
 	const {
 		age,
@@ -65,25 +83,20 @@ app.post("/disease", (req, res) => {
 		blurred_vision,
 		dryness,
 	} = req.body;
-	console.log(
-		age +
-			" " +
-			gender +
-			" " +
-			blinkrate +
-			" " +
-			redness +
-			" " +
-			burning_sensation +
-			" " +
-			screen_time +
-			" " +
-			scratchy_level +
-			" " +
-			blurred_vision +
-			" " +
-			dryness
-	);
+	const person = {
+		iage: age,
+		igender: gender,
+		iblinkrate: blinkrate,
+		iredness: redness,
+		iburning_sensation: burning_sensation,
+		iscreen_time: screen_time,
+		iscratchy_level: scratchy_level,
+		iblurred_vision: blurred_vision,
+		idryness: dryness,
+	};
+	console.log(person);
+	checkDisease(person);
+	setTimeout(() => res.send(diseaseResult), 2000);
 });
 
 const PORT = 5500;

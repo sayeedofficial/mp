@@ -1,7 +1,16 @@
 .disease-form-container {
+	padding-left: 20px;
+}
+
+.disease-result-container {
+	float: right;
 	padding-top: 5px;
-	padding-left: 15px;
-	margin-right: 800px;
+	padding-right: 500px;
+}
+.disease-form-container h2 {
+	float: right;
+	padding-right: 600px;
+	padding-bottom: 20px;
 }
 label {
 	margin-right: 10px;
