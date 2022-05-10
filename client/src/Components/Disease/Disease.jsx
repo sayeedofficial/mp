@@ -175,7 +175,7 @@ class Disease extends React.Component {
 					</div>
 					<div className="column-d2">
 						<h3>Result : {this.state.diseaseResult}</h3>
-						 <Precautions /> 
+						{this.state.diseaseResult==="Yes" ? <Precautions/> : <></>}
 					</div>
 				</div>
 			</div>
