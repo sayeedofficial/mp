@@ -5,7 +5,6 @@
 	padding: 30px;
 	height: 300px;
 }
-
 .row-d:after {
 	content: "";
 	display: table;

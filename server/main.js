@@ -19,7 +19,6 @@ app.use(
 	})
 );
 
-
 // Funtion That Executes The Script In Backend and gets blinkCount result
 let blinkCount = 0;
 function getBlink() {
@@ -56,10 +55,6 @@ app.post("/upload", (req, res) => {
 	});
 });
 
-
-
-
-
 let diseaseResult = " ";
 function checkDisease(person) {
 	let pyshell = new PythonShell("Disease.py");
@@ -82,6 +77,7 @@ app.post("/disease", (req, res) => {
 		scratchy_level,
 		blurred_vision,
 		dryness,
+		thready_mucus_discharge,
 	} = req.body;
 	const person = {
 		iage: age,
@@ -93,6 +89,7 @@ app.post("/disease", (req, res) => {
 		iscratchy_level: scratchy_level,
 		iblurred_vision: blurred_vision,
 		idryness: dryness,
+		ithready_mucus_discharge: thready_mucus_discharge,
 	};
 	console.log(person);
 	checkDisease(person);

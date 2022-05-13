@@ -20,6 +20,7 @@ class Disease extends React.Component {
 			scratchy_level: " ",
 			blurred_vision: " ",
 			dryness: " ",
+			thready_mucus_discharge: " ",
 			diseaseResult: "None",
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -92,6 +93,7 @@ class Disease extends React.Component {
 								onChange={this.handleChange}
 							>
 								<option>Choose</option>
+								<option>Normal</option>
 								<option>Low</option>
 								<option>Medium</option>
 								<option>High</option>
@@ -112,20 +114,6 @@ class Disease extends React.Component {
 
 							<br />
 
-							<label>Scratchy Sensation Seen</label>
-							<select
-								name="scratchy_level"
-								value={this.state.scratchy_level}
-								onChange={this.handleChange}
-							>
-								<option>Choose</option>
-								<option>Low</option>
-								<option>Medium</option>
-								<option>High</option>
-							</select>
-
-							<br />
-
 							<label>Screen Time Per Day</label>
 							<input
 								onChange={this.handleChange}
@@ -135,7 +123,33 @@ class Disease extends React.Component {
 							/>
 
 							<br />
+							<label>Scratchy Sensation Seen</label>
+							<select
+								name="scratchy_level"
+								value={this.state.scratchy_level}
+								onChange={this.handleChange}
+							>
+								<option>Choose</option>
+								<option>Normal</option>
+								<option>Low</option>
+								<option>Medium</option>
+								<option>High</option>
+							</select>
 
+							<br />
+							<label>Thready Mucus Discharge</label>
+							<select
+								name="thready_mucus_discharge"
+								value={this.state.thready_mucus_discharge}
+								onChange={this.handleChange}
+							>
+								<option>Choose</option>
+								<option>Normal</option>
+								<option>Low</option>
+								<option>Medium</option>
+								<option>High</option>
+							</select>
+							<br />
 							<label>Blurred Vision</label>
 							<select
 								name="blurred_vision"
@@ -157,9 +171,9 @@ class Disease extends React.Component {
 							>
 								<option>Choose</option>
 								<option>Normal</option>
-								<option>Mild</option>
-								<option>Moderate</option>
-								<option>Severe</option>
+								<option>Low</option>
+								<option>Medium</option>
+								<option>High</option>
 							</select>
 							<br />
 							<Button
@@ -175,7 +189,11 @@ class Disease extends React.Component {
 					</div>
 					<div className="column-d2">
 						<h3>Result : {this.state.diseaseResult}</h3>
-						{this.state.diseaseResult==="Yes" ? <Precautions/> : <></>}
+						{this.state.diseaseResult === "Yes" ? (
+							<Precautions />
+						) : (
+							<Fragment></Fragment>
+						)}
 					</div>
 				</div>
 			</div>

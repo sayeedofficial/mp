@@ -1,15 +1,14 @@
 .precaution-container {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    padding: 25px;
-    margin-top: 5px;
-    margin-right: 200px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	padding: 25px;
+	margin-top: 5px;
+	margin-right: 200px;
 }
 
 @media screen and (max-width: 400px) {
 	.precaution-container {
-
-        box-shadow: none;
-        margin: none;
-        display: inline-block;
-    }
+		box-shadow: none;
+		margin: none;
+		display: inline-block;
+	}
 }
