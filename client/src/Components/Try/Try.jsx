@@ -6,51 +6,62 @@ import SaveIcon from "@mui/icons-material/Save";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Try.css";
+import Chart from "./Chart";
 
 toast.configure();
 
 function Try() {
-	const [file, setFile] = useState();
-	const [fileName, setFileName] = useState("");
+  const [file, setFile] = useState();
 
-	const saveFile = (e) => {
-		setFile(e.target.files[0]);
-		setFileName(e.target.files[0].name);
-	};
+  const saveFile = (e) => {
+    setFile(e.target.files[0]);
+    // const reader = new FileReader();
+    //   reader.onload = (e) => {
+    //     const text = e.target.result;
+    //     console.log(text);
+    //   };
+    //   reader.readAsText(e.target.files[0]);
+  };
 
-	const uploadFile = async (e) => {
-		toast("File Uploaded Successfully");
-		const formData = new FormData();
-		formData.append("file", file);
-		formData.append("fileName", fileName);
-		try {
-			const res = await axios.post("http://localhost:5500/upload", formData);
-			console.log(res);
-		} catch (ex) {
-			console.log(ex);
-		}
-	};
+  const uploadFile = async (e) => {
+    const formData = new FormData();
+    formData.append("file", file);
 
-	return (
-		<div>
-			<div className="fileform-container">
-      <h4>Upload the Text File Containing Time and Voltage Values </h4>
-				<input accept={[".txt"]} type="file" onChange={saveFile} className="custom-file-input" />
+    try {
+      toast("File Uploaded Successfully");
+      const res = await axios.post("http://localhost:5500/upload", formData);
+      console.log(res);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
 
-				<Button
-					size="small"
-					startIcon={<SaveIcon />}
-					variant="contained"
-					onClick={uploadFile}
-				>
-					Upload
-				</Button>
-				
-				<br />
-			</div>
-			<BlinkRate />
-		</div>
-	);
+  return (
+    <div>
+      <div className="fileform-container">
+        <h4>Upload the Text File Containing Time and Voltage Values </h4>
+        <input
+          accept={[".txt"]}
+          type="file"
+          onChange={saveFile}
+          className="custom-file-input"
+        />
+
+        <Button
+          size="small"
+          startIcon={<SaveIcon />}
+          variant="contained"
+          onClick={uploadFile}
+        >
+          Upload
+        </Button>
+
+        <br />
+      </div>
+      <BlinkRate />
+      <Chart />
+    </div>
+  );
 }
 
 export default Try;
