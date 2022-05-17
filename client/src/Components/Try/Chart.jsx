@@ -1,7 +1,7 @@
-import React from "react";
+import React  from "react";
 import axios from "axios";
+import parse from 'html-react-parser';
 import { Button } from "@mui/material";
-import svg from "svg";
 import "./Blink.css";
 class Chart extends React.Component {
   constructor(props) {
@@ -15,12 +15,11 @@ class Chart extends React.Component {
 
   async getChart() {
     const cn = await axios.get("http://localhost:5500/getchart");
-    console.log(cn.data);
     const data = cn.data;
-    var elem = svg(data);
     this.setState({
-      svg: elem,
-    });
+      svg: data,
+    },()=>console.log(this.state.svg));
+    
   }
   hitChart() {
     this.getChart();
@@ -29,16 +28,7 @@ class Chart extends React.Component {
   render() {
     return (
       <div className="blink-container">
-        {/* <a
-          rel="noreferrer"
-          target="_self"
-          href="http://localhost:5500/getchart"
-        >
-          
-        </a> */}
         <Button
-          href="http://localhost:5500/getchart"
-          target="_blank"
             color="primary"
             size="small"
             variant="contained"
@@ -47,7 +37,8 @@ class Chart extends React.Component {
             {" "}
             Display Chart 
           </Button>
-        <img src={this.state.svg} alt="" />
+          <br />
+         {parse(this.state.svg)} 
       </div>
     );
   }
