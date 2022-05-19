@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
+const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 const { PythonShell } = require("python-shell");
 const app = express();
@@ -10,6 +11,8 @@ app.use(fileupload());
 app.use(express.static("files"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '75mb'}));
+app.use(bodyParser.urlencoded({limit: '75mb', extended: true}));
 
 app.use(
   cors({
