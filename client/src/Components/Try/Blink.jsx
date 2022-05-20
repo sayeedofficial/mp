@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import loading from "./loading.gif";
 import { Button } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
 import "./Blink.css";
 class BlinkRate extends React.Component {
   constructor(props) {
@@ -36,13 +37,14 @@ class BlinkRate extends React.Component {
 
         <br />
         <Button
+          startIcon={<CircleIcon />}
           color="error"
           size="small"
           variant="contained"
           onClick={this.hitBlink}
         >
           {" "}
-          Blink Count
+          Blink
         </Button>
         <br />
         <br />

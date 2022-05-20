@@ -6,7 +6,9 @@ import Precautions from "./Precautions";
 import jsPDF from "jspdf";
 import parse from "html-react-parser";
 import "./Disease.css";
-
+import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
+import CircleIcon from "@mui/icons-material/Circle";
+import Dashboard from "./Dashboard";
 toast.configure();
 
 class Disease extends React.Component {
@@ -94,7 +96,7 @@ class Disease extends React.Component {
       this.state.blurred_vision +
       "\n\n" +
       "Dryness Level \t\t" +
-      this.state.dryness +
+      this.state.diseaseResult +
       "\n\n" +
       "Disease Status \t\t" +
       this.state.diseaseResult +
@@ -103,7 +105,12 @@ class Disease extends React.Component {
     let precuations =
       "Precautions\n\n1.Avoid air blowing in your eyes\n2.Add moisture to the air\n3.Consider wearing wraparound sunglasses or other protective eyewear\n4.Take eye breaks during long tasks\n5.Be aware of your environment\n6.Position your computer screen below eye level\n7.Stop smoking and avoid smoke\n8.Use artificial tears regularly\n";
 
-    if (this.state.diseaseResult === "Yes") {
+    if (
+      this.state.diseaseResult === "Mild" ||
+      this.state.diseaseResult === "Low" ||
+      this.state.diseaseResult === "Medium" ||
+      this.state.diseaseResult === "High"
+    ) {
       doc.text(personDetails + precuations, 10, 10);
     } else {
       doc.text(personDetails, 10, 10);
@@ -117,7 +124,7 @@ class Disease extends React.Component {
       <div className="disease-form-container">
         <div className="row-d">
           <div className="column-d1">
-            <h3>Fill The Below Form and Submit The Details</h3>
+            <h2>Fill The Below Form and Submit The Details</h2>
             <form onSubmit={this.handleSubmit}>
               <label>Name</label>
               <input
@@ -186,7 +193,7 @@ class Disease extends React.Component {
                 value={this.state.screen_time}
               />
               <br />
-              <label>Scratchy Sensation Seen</label>
+              <label>Scratchy Sensation</label>
               <select
                 name="scratchy_level"
                 value={this.state.scratchy_level}
@@ -199,7 +206,7 @@ class Disease extends React.Component {
                 <option>High</option>
               </select>
               <br />
-              <label>Thready Mucus Discharge</label>
+              <label>Mucus Discharge</label>
               <select
                 name="thready_mucus_discharge"
                 value={this.state.thready_mucus_discharge}
@@ -223,20 +230,8 @@ class Disease extends React.Component {
                 <option>No</option>
               </select>
               <br />
-              <label>Dryness Level ?</label>
-              <select
-                name="dryness"
-                value={this.state.dryness}
-                onChange={this.handleChange}
-              >
-                <option>Choose</option>
-                <option>Normal</option>
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-              </select>
-              <br />
               <Button
+                startIcon={<CircleIcon />}
                 size="small"
                 id="submit-btn"
                 variant="contained"
@@ -246,8 +241,9 @@ class Disease extends React.Component {
                 Submit
               </Button>{" "}
               <Button
+                startIcon={<DownloadForOfflineIcon />}
                 onClick={this.getChart}
-                color="success"
+                color="error"
                 size="small"
                 variant="contained"
               >
@@ -256,13 +252,31 @@ class Disease extends React.Component {
             </form>
           </div>
           <div className="column-d2">
-            <h3>Result : {this.state.diseaseResult}</h3>
-            {this.state.diseaseResult === "Mild" || this.state.diseaseResult === "Low" || this.state.diseaseResult === "Medium" || this.state.diseaseResult === "High" ? (
+            <h2>Dry Eyes Disease Status : {this.state.diseaseResult}</h2>
+            {this.state.diseaseResult === "Mild" ||
+            this.state.diseaseResult === "Low" ||
+            this.state.diseaseResult === "Medium" ||
+            this.state.diseaseResult === "High" ? (
               <Precautions />
             ) : (
               <Fragment></Fragment>
             )}
             <br></br>
+            <Dashboard
+              name={this.state.name}
+              age={this.state.age}
+              gender={this.state.gender}
+              blinkrate={this.state.blinkrate}
+              redness={this.state.redness}
+              burningsensation={this.state.burning_sensation}
+              screentime={this.state.screen_time}
+              scratchy={this.state.scratchy_level}
+              blurred={this.state.blurred_vision}
+              mucus={this.state.thready_mucus_discharge}
+              dryness = {this.state.diseaseResult}
+            />
+            <br />
+            <h2>Blink Pattern Chart</h2>
             {parse(this.state.svg)}
           </div>
         </div>

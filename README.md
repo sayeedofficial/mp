@@ -11,15 +11,17 @@ This Application Helps You to Find Number of Blinks Made Per Minute
 
 ### Python
 
-| Name       | Version |
-| ---------- | ------- |
-| Python     | 3.10.4  |
-| numpy      | 1.22.3  |
-| pandas     | 1.4.2   |
-| matplotlib | 3.5.2   |
-| scipy      | 1.8.0   |
-| plotly     | 5.7.0   |
-| kaleido    | 0.2.1   |
+| Name         | Version |
+| ------------ | ------- |
+| Python       | 3.10.4  |
+| numpy        | 1.22.3  |
+| pandas       | 1.4.2   |
+| matplotlib   | 3.5.2   |
+| scipy        | 1.8.0   |
+| plotly       | 5.7.0   |
+| kaleido      | 0.2.1   |
+| scikit-learn | 1.1.1   |
+| seaborn      | 0.11.2  |
 
 ### JavaScript
 
@@ -33,7 +35,7 @@ This Application Helps You to Find Number of Blinks Made Per Minute
 #### Step 1
 
 ```
- pip install numpy pandas matplotlib scipy plotly kaleido
+ pip install numpy pandas matplotlib scipy plotly kaleido scikit-learn seaborn 
 ```
 
 #### Step 2

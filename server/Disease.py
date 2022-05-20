@@ -21,7 +21,7 @@ rburning_sensation = response["iburning_sensation"]
 rscreen_time = int(response["iscreen_time"])
 rscratchy_level = response["iscratchy_level"]
 rblurred_vision = response["iblurred_vision"]
-rdryness = response["idryness"]
+rdryness = "None"
 rthready_mucus_discharge = response["ithready_mucus_discharge"]
 
 

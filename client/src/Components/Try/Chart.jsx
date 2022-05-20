@@ -1,6 +1,7 @@
 import React  from "react";
 import axios from "axios";
 import parse from 'html-react-parser';
+import InsertChartIcon from '@mui/icons-material/InsertChart';
 import { Button } from "@mui/material";
 import "./Blink.css";
 class Chart extends React.Component {
@@ -29,13 +30,14 @@ class Chart extends React.Component {
     return (
       <div className="blink-container">
         <Button
+        startIcon = {<InsertChartIcon/>}
             color="primary"
             size="small"
             variant="contained"
             onClick={this.hitChart}
           >
             {" "}
-            Display Chart 
+          Chart 
           </Button>
           <br />
          {parse(this.state.svg)} 
