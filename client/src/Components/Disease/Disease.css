@@ -1,28 +1,28 @@
 .column-d1,
 .column-d2 {
-	float: left;
-	width: 50%;
-	padding: 30px;
-	height: 300px;
+  float: left;
+  width: 50%;
+  padding: 30px;
+  height: 300px;
 }
 .row-d:after {
-	content: "";
-	display: table;
-	clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 @media screen and (max-width: 400px) {
-	.column-d2 {
-		float: none;
-		padding-top: 900px;
-	}
+  .column-d2 {
+    float: none;
+    padding-top: 900px;
+  }
 }
 
 label {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 input,
 select {
-	margin: 10px;
-	padding: 5px;
+  margin: 10px;
+  padding: 5px;
 }

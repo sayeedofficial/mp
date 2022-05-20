@@ -254,17 +254,16 @@ class Disease extends React.Component {
                 Generate Report
               </Button>
             </form>
-            
           </div>
           <div className="column-d2">
             <h3>Result : {this.state.diseaseResult}</h3>
-            {this.state.diseaseResult === "Yes" ? (
+            {this.state.diseaseResult === "Mild" || this.state.diseaseResult === "Low" || this.state.diseaseResult === "Medium" || this.state.diseaseResult === "High" ? (
               <Precautions />
             ) : (
               <Fragment></Fragment>
             )}
             <br></br>
-			{parse(this.state.svg)}
+            {parse(this.state.svg)}
           </div>
         </div>
       </div>
