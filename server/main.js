@@ -6,6 +6,10 @@ const fileupload = require("express-fileupload");
 const { PythonShell } = require("python-shell");
 const app = express();
 
+if (!fs.existsSync("./files")) {
+  fs.mkdirSync("./files");
+}
+
 app.use(cors());
 app.use(fileupload());
 app.use(express.static("files"));
@@ -48,9 +52,7 @@ app.get("/getchart", (req, res) => {
 
 //upload file from client
 app.post("/upload", (req, res) => {
-  if (!fs.existsSync("./files")) {
-    fs.mkdirSync("./files");
-  }
+  
   const newpath = __dirname + "/files/";
   const file = req.files.file;
   const filename = file.name;
