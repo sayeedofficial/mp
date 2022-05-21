@@ -1,4 +1,4 @@
-.pcard {
+.tcard {
   text-align: center;
   width: 300px;
   padding: 10px;
@@ -12,27 +12,28 @@
     background-color:  #ffcc5c;
     border-radius:5px;
   } */
-.pcard h2 {
+.tcard h2 {
   background-color: #96ceb4;
   color: white;
   border-radius: 5px;
 }
-.pcard h5 {
+.tcard h5 {
   padding: 0px;
 }
-.pcard:hover {
+.tcard:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.pcard a {
+.tcard a {
   color: whitesmoke;
 }
-.pcard a:hover {
+.tcard a:hover {
   color: rgb(255, 255, 255);
 }
-.pcard img {
+.tcard img {
   text-align: center;
-  background: white;
+  background-color: white;
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  margin:auto;
 }

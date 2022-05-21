@@ -22,16 +22,7 @@ data = pd.read_csv("./files/data.csv")
 x = data['Timestamp']
 y = data['Voltage']
 
-# i = 0.0
-# j = 1
-# one_minute_time = []
-# one_minute_voltage = []
 
-# while i < 60.0:
-#     one_minute_time.append(x[j])
-#     one_minute_voltage.append(y[j])
-#     i+=0.01
-#     j+=1
   
 fig = go.Figure(data=go.Scatter(
     x = x,
@@ -39,7 +30,6 @@ fig = go.Figure(data=go.Scatter(
     mode = 'lines'
 ))
 
-#fig.show()
 
 voltage = y
 

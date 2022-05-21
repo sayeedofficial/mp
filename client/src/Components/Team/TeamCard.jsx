@@ -5,8 +5,9 @@ import "./TeamCard.css";
 
 function TeamCard({ name, image, linkedin, about }) {
   return (
-    <div className="pcard">
+    <div className="tcard">
       <h1> {name}</h1>
+      <br></br>
       <img src={image} alt=" " srcSet="" />
       <br />
       {/* <p>

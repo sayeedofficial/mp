@@ -4,7 +4,8 @@ import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Components/Home/Home";
 import Team from "./Components/Team/Team";
 import Try from "./Components/Try/Try";
-import Disease from "./Components/Disease/Disease"
+import Disease from "./Components/Disease/Disease";
+
 const App = () => (
   <Fragment>
     <BrowserRouter>
