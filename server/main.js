@@ -15,8 +15,8 @@ app.use(fileupload());
 app.use(express.static("files"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.json({limit: '75mb'}));
-app.use(bodyParser.urlencoded({limit: '75mb', extended: true}));
+app.use(bodyParser.json({ limit: "75mb" }));
+app.use(bodyParser.urlencoded({ limit: "75mb", extended: true }));
 
 app.use(
   cors({
@@ -25,6 +25,10 @@ app.use(
     optionSuccessStatus: 200,
   })
 );
+
+app.get("/", (req, res) => {
+  res.send("welcome to eog server");
+});
 
 // Funtion That Executes The Script In Backend and gets blinkCount result
 let blinkCount = 0;
@@ -52,7 +56,6 @@ app.get("/getchart", (req, res) => {
 
 //upload file from client
 app.post("/upload", (req, res) => {
-  
   const newpath = __dirname + "/files/";
   const file = req.files.file;
   const filename = file.name;
