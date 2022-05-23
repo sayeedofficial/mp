@@ -34,12 +34,12 @@ fig = go.Figure(data=go.Scatter(
 voltage = y
 
 indices = find_peaks(voltage,threshold=0,distance = 50)[0]
-peaks = list(i for i in indices if voltage[i]>98)
+peaks = list(i for i in indices if voltage[i]>90)
 
 fig = go.Figure()
 fig.add_trace(go.Scatter(
     y=voltage,
-    mode='lines+markers',
+    mode='lines',
     name='Original Plot'
 ))
 
@@ -56,10 +56,8 @@ fig.add_trace(go.Scatter(
     name='Detected Peaks'
 ))
 
-if not os.path.exists("images"):
-    os.mkdir("images")
 
-fig.write_image("images/fig1.svg")
+fig.write_image("images/fig.svg")
 
 
 

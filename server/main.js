@@ -9,6 +9,10 @@ const app = express();
 if (!fs.existsSync("./files")) {
   fs.mkdirSync("./files");
 }
+if (!fs.existsSync("./images")) {
+  fs.mkdirSync("./images");
+}
+
 
 app.use(cors());
 app.use(fileupload());
@@ -51,7 +55,7 @@ app.get("/blinkcount", (req, res) => {
 
 app.get("/getchart", (req, res) => {
   res.setHeader("Content-Type", "image/svg+xml");
-  res.sendFile(__dirname + "/images/fig1.svg");
+  res.sendFile(__dirname + "/images/fig.svg");
 });
 
 //upload file from client
