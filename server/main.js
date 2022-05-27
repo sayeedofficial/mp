@@ -32,6 +32,7 @@ app.use(
 
 app.get("/", (req, res) => {
   res.send("welcome to eog server");
+  console.log(`Request was sent to ${req.url}`)
 });
 
 // Funtion That Executes The Script In Backend and gets blinkCount result
@@ -46,6 +47,7 @@ function getBlink() {
 }
 //Get Blink Count Result
 app.get("/blinkcount", (req, res) => {
+  console.log(`Request was sent to ${req.url}`)
   getBlink();
   setTimeout(() => {
     console.log(blinkCount);
@@ -54,12 +56,14 @@ app.get("/blinkcount", (req, res) => {
 });
 
 app.get("/getchart", (req, res) => {
+  console.log(`Request was sent to ${req.url}`)
   res.setHeader("Content-Type", "image/svg+xml");
   res.sendFile(__dirname + "/images/fig.svg");
 });
 
 //upload file from client
 app.post("/upload", (req, res) => {
+  console.log(`Request was sent to ${req.url}`)
   const newpath = __dirname + "/files/";
   const file = req.files.file;
   const filename = file.name;
@@ -70,6 +74,7 @@ app.post("/upload", (req, res) => {
       return;
     }
   });
+  console.log("File Received Successfully")
 });
 
 let diseaseResult = " ";
@@ -84,6 +89,7 @@ function checkDisease(person) {
 }
 
 app.post("/disease", (req, res) => {
+  console.log(`Request was sent to ${req.url}`)
   const {
     age,
     gender,
