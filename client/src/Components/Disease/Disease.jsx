@@ -250,6 +250,9 @@ class Disease extends React.Component {
                 Generate Report
               </Button>
             </form>
+            <br />
+            <h2>Blink Pattern Chart</h2>
+            {parse(this.state.svg)}
           </div>
           <div className="column-d2">
             <h2>Dry Eyes Disease Status : {this.state.diseaseResult}</h2>
@@ -276,8 +279,8 @@ class Disease extends React.Component {
               dryness = {this.state.diseaseResult}
             />
             <br />
-            <h2>Blink Pattern Chart</h2>
-            {parse(this.state.svg)}
+           
+            
           </div>
         </div>
       </div>

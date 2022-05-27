@@ -35,25 +35,17 @@ app.get("/", (req, res) => {
   console.log(`Request was sent to ${req.url}`)
 });
 
-// Funtion That Executes The Script In Backend and gets blinkCount result
-let blinkCount = 0;
-function getBlink() {
-  let pyshell = new PythonShell("blink.py");
-  pyshell.send("hello");
 
-  pyshell.on("message", function (message) {
-    blinkCount = message;
-  });
-}
-//Get Blink Count Result
-app.get("/blinkcount", (req, res) => {
-  console.log(`Request was sent to ${req.url}`)
-  getBlink();
-  setTimeout(() => {
-    console.log(blinkCount);
-    res.status(200).send(blinkCount.toString());
-  }, 4000);
-});
+
+app.get("/blinkcount",(req,res)=>{
+   console.log(`Request was sent to ${req.url}`)
+   let pyshell = new PythonShell("blink.py");
+   pyshell.send("hello");
+   pyshell.on("message",function(message){
+       console.log(message)
+       res.status(200).send(message.toString())
+   })
+})
 
 app.get("/getchart", (req, res) => {
   console.log(`Request was sent to ${req.url}`)
@@ -77,19 +69,11 @@ app.post("/upload", (req, res) => {
   console.log("File Received Successfully")
 });
 
-let diseaseResult = " ";
-function checkDisease(person) {
-  let pyshell = new PythonShell("Disease.py");
-  pyshell.send(JSON.stringify(person));
-
-  pyshell.on("message", function (message) {
-    console.log(message);
-    diseaseResult = message;
-  });
-}
 
 app.post("/disease", (req, res) => {
   console.log(`Request was sent to ${req.url}`)
+  let pyshell = new PythonShell("Disease.py");
+  
   const {
     age,
     gender,
@@ -115,8 +99,11 @@ app.post("/disease", (req, res) => {
     ithready_mucus_discharge: thready_mucus_discharge,
   };
   console.log(person);
-  checkDisease(person);
-  setTimeout(() => res.send(diseaseResult), 2000);
+  pyshell.send(JSON.stringify(person));
+  pyshell.on("message", function (message) {
+    console.log(message);
+    res.status(200).send(message)
+  });
 });
 
 const PORT = 5500;

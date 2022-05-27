@@ -40,6 +40,9 @@ class Chart extends React.Component {
           Chart 
           </Button>
           <br />
+          <br />
+
+          <h2>Blink Pattern Chart</h2>
          {parse(this.state.svg)} 
       </div>
     );
