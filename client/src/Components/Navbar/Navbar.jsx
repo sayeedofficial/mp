@@ -5,7 +5,7 @@ const Navbar = () => {
 	return (
 		<div className="navbar">
 			<Link to="/">
-				<h2> Blink Analysis</h2>
+				<h2>EOG Blink Finder</h2>
 			</Link>
 
 			<ul>
