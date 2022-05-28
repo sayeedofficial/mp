@@ -37,6 +37,7 @@ class BlinkRate extends React.Component {
 
         <br />
         <Button
+          disabled = {this.state.count===-1 ? true : false}
           startIcon={<CircleIcon />}
           color="error"
           size="small"

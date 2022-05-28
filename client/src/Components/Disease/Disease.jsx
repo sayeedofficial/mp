@@ -30,6 +30,7 @@ class Disease extends React.Component {
       svg: "",
     };
     this.getChart = this.getChart.bind(this);
+    this.getReport = this.getReport.bind(this)
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -52,6 +53,7 @@ class Disease extends React.Component {
       diseaseResult: response.data,
     });
     console.log(this.state);
+    this.getChart()
   }
   async getChart() {
     const cn = await axios.get("http://localhost:5500/getchart");
@@ -62,6 +64,8 @@ class Disease extends React.Component {
       },
       () => console.log(this.state.svg)
     );
+  }
+  getReport(){
     const doc = new jsPDF();
     let personDetails =
       "Report\n\n" +
@@ -98,7 +102,7 @@ class Disease extends React.Component {
       "Dryness Level \t\t" +
       this.state.diseaseResult +
       "\n\n" +
-      "Disease Status \t\t" +
+      "Disease Status\t\t" +
       this.state.diseaseResult +
       "\n\n";
 
@@ -242,7 +246,7 @@ class Disease extends React.Component {
               </Button>{" "}
               <Button
                 startIcon={<DownloadForOfflineIcon />}
-                onClick={this.getChart}
+                onClick={this.getReport}
                 color="error"
                 size="small"
                 variant="contained"

@@ -15,18 +15,12 @@ function Try() {
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
-    // const reader = new FileReader();
-    //   reader.onload = (e) => {
-    //     const text = e.target.result;
-    //     console.log(text);
-    //   };
-    //   reader.readAsText(e.target.files[0]);
   };
 
   const uploadFile = async (e) => {
     const formData = new FormData();
     formData.append("file", file);
-
+    
     try {
       toast("File Uploaded Successfully");
       const res = await axios.post("http://localhost:5500/upload", formData);
@@ -41,6 +35,7 @@ function Try() {
       <div className="fileform-container">
         <h4>Upload the Text File Containing Time and Voltage Values </h4>
         <input
+        id="eog-file"
           accept={[".txt"]}
           type="file"
           onChange={saveFile}
