@@ -73,7 +73,8 @@ def predictDisease(df,input):
   output = knn.predict(input)
   return output
 
-df = pd.read_csv("DiseaseData.csv")
+
+df = pd.read_csv("https://docs.google.com/spreadsheets/d/1_CzYYt6IdWjMG4asA5Sr0BDdx8t6dSG5WJ98KVJgfIM/export?format=csv")
 
 input = {"Age":rage,"Gender":rgender,"BlinkRate":rblinkrate,"RednessLevel":rredness , "ScreenTime": rscreen_time,"BurningSensation":rburning_sensation,"ScratchySensation": rscratchy_level, "ThreadyDischarge":rthready_mucus_discharge,"BlurredVision":rblurred_vision,"Dryness":rdryness}
 output = predictDisease(df,input)

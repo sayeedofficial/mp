@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 
 app.get("/blinkcount",(req,res)=>{
    console.log(`Request was sent to ${req.url}`)
-   let pyshell = new PythonShell("blink.py");
+   let pyshell = new PythonShell("./Core/blink.py");
    pyshell.send("hello");
    pyshell.on("message",function(message){
        console.log(message)
@@ -72,7 +72,7 @@ app.post("/upload", (req, res) => {
 
 app.post("/disease", (req, res) => {
   console.log(`Request was sent to ${req.url}`)
-  let pyshell = new PythonShell("Disease.py");
+  let pyshell = new PythonShell("./Core/disease.py");
   
   const {
     age,
@@ -103,6 +103,12 @@ app.post("/disease", (req, res) => {
   pyshell.on("message", function (message) {
     console.log(message);
     res.status(200).send(message)
+  });
+  pyshell.end(function (err,code,signal) {
+    if (err) throw err;
+    console.log('The exit code was: ' + code);
+    console.log('The exit signal was: ' + signal);
+    console.log('finished');
   });
 });
 
