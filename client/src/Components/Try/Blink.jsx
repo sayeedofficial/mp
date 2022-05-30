@@ -3,6 +3,7 @@ import axios from "axios";
 import loading from "./loading.gif";
 import { Button } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+import Chart from "./Chart"
 import "./Blink.css";
 class BlinkRate extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class BlinkRate extends React.Component {
         </Button>
         <br />
         <br />
+        <Chart btnState={this.state.count} />
       </div>
     );
   }

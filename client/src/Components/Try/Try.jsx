@@ -6,7 +6,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Try.css";
-import Chart from "./Chart";
+
 
 toast.configure();
 
@@ -54,7 +54,7 @@ function Try() {
         <br />
       </div>
       <BlinkRate />
-      <Chart />
+
     </div>
   );
 }

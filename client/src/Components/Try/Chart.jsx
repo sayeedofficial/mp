@@ -9,6 +9,7 @@ class Chart extends React.Component {
     super(props);
     this.state = {
       svg: "",
+
     };
     this.getChart = this.getChart.bind(this);
     this.hitChart = this.hitChart.bind(this);
@@ -35,6 +36,7 @@ class Chart extends React.Component {
             size="small"
             variant="contained"
             onClick={this.hitChart}
+            disabled = {this.props.btnState===-1 ? true : false}
           >
             {" "}
           Chart 
