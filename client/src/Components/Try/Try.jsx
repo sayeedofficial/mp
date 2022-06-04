@@ -12,9 +12,11 @@ toast.configure();
 
 function Try() {
   const [file, setFile] = useState();
+  const [isFilePicked, setIsFilePicked] = useState(false);
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
+    setIsFilePicked(true)
   };
 
   const uploadFile = async (e) => {
@@ -47,13 +49,14 @@ function Try() {
           startIcon={<SaveIcon />}
           variant="contained"
           onClick={uploadFile}
+          disabled = {isFilePicked ? false : true}
         >
           Upload
         </Button>
 
         <br />
       </div>
-      <BlinkRate />
+      <BlinkRate fileState= {isFilePicked} />
 
     </div>
   );

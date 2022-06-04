@@ -45,6 +45,12 @@ app.get("/blinkcount",(req,res)=>{
        console.log(message)
        res.status(200).send(message.toString())
    })
+   pyshell.end(function (err,code,signal) {
+    if (err) throw err;
+    console.log('The exit code was: ' + code);
+    console.log('The exit signal was: ' + signal);
+    console.log('finished');
+  });
 })
 
 app.get("/getchart", (req, res) => {

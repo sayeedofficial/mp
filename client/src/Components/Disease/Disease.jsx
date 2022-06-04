@@ -16,21 +16,21 @@ class Disease extends React.Component {
     super(props);
     this.state = {
       name: "",
-      age: " ",
-      gender: " ",
-      blinkrate: " ",
-      redness: " ",
-      burning_sensation: " ",
-      screen_time: " ",
-      scratchy_level: " ",
-      blurred_vision: " ",
-      dryness: " ",
-      thready_mucus_discharge: " ",
+      age: "",
+      gender: "",
+      blinkrate: "",
+      redness: "",
+      burning_sensation: "",
+      screen_time: "",
+      scratchy_level: "",
+      blurred_vision: "",
+      dryness: "",
+      thready_mucus_discharge: "",
       diseaseResult: "None",
       svg: "",
     };
     this.getChart = this.getChart.bind(this);
-    this.getReport = this.getReport.bind(this)
+    this.getReport = this.getReport.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -52,8 +52,7 @@ class Disease extends React.Component {
     this.setState({
       diseaseResult: response.data,
     });
-    console.log(this.state);
-    this.getChart()
+    this.getChart();
   }
   async getChart() {
     const cn = await axios.get("http://localhost:5500/getchart");
@@ -62,10 +61,10 @@ class Disease extends React.Component {
       {
         svg: data,
       },
-      () => console.log(this.state.svg)
+      () => console.log("SVG Received")
     );
   }
-  getReport(){
+  getReport() {
     const doc = new jsPDF();
     let personDetails =
       "Report\n\n" +
@@ -235,6 +234,26 @@ class Disease extends React.Component {
               </select>
               <br />
               <Button
+                disabled={
+                  this.state.blurred_vision.length === 0 ||
+                  this.state.thready_mucus_discharge.length === 0 ||
+                  this.state.scratchy_level.length === 0 ||
+                  this.state.gender.length === 0 ||
+                  this.state.redness.length === 0 ||
+                  this.state.burning_sensation.length === 0 ||
+                  this.state.name.length === 0 ||
+                  this.state.age < 0 ||
+                  this.state.age.length===0 ||
+                  this.state.age === 0 ||
+                  this.state.blinkrate < 0 ||
+                  this.state.blinkrate.length===0||
+                  this.state.blinkrate === 0 ||
+                  this.state.screen_time < 0 ||
+                  this.state.screen_time.length===0||
+                  this.state.screen_time === 0
+                    ? true
+                    : false
+                }
                 startIcon={<CircleIcon />}
                 size="small"
                 id="submit-btn"
@@ -245,6 +264,26 @@ class Disease extends React.Component {
                 Submit
               </Button>{" "}
               <Button
+                disabled={
+                  this.state.blurred_vision.length === 0 ||
+                  this.state.thready_mucus_discharge.length === 0 ||
+                  this.state.scratchy_level.length === 0 ||
+                  this.state.gender.length === 0 ||
+                  this.state.redness.length === 0 ||
+                  this.state.burning_sensation.length === 0 ||
+                  this.state.name.length === 0 ||
+                  this.state.age < 0 ||
+                  this.state.age.length===0 ||
+                  this.state.age === 0 ||
+                  this.state.blinkrate < 0 ||
+                  this.state.blinkrate.length===0||
+                  this.state.blinkrate === 0 ||
+                  this.state.screen_time < 0 ||
+                  this.state.screen_time.length===0||
+                  this.state.screen_time === 0
+                    ? true
+                    : false
+                }
                 startIcon={<DownloadForOfflineIcon />}
                 onClick={this.getReport}
                 color="error"
@@ -280,11 +319,9 @@ class Disease extends React.Component {
               scratchy={this.state.scratchy_level}
               blurred={this.state.blurred_vision}
               mucus={this.state.thready_mucus_discharge}
-              dryness = {this.state.diseaseResult}
+              dryness={this.state.diseaseResult}
             />
             <br />
-           
-            
           </div>
         </div>
       </div>

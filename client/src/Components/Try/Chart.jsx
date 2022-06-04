@@ -1,7 +1,7 @@
-import React  from "react";
+import React from "react";
 import axios from "axios";
-import parse from 'html-react-parser';
-import InsertChartIcon from '@mui/icons-material/InsertChart';
+import parse from "html-react-parser";
+import InsertChartIcon from "@mui/icons-material/InsertChart";
 import { Button } from "@mui/material";
 import "./Blink.css";
 class Chart extends React.Component {
@@ -9,7 +9,6 @@ class Chart extends React.Component {
     super(props);
     this.state = {
       svg: "",
-
     };
     this.getChart = this.getChart.bind(this);
     this.hitChart = this.hitChart.bind(this);
@@ -18,10 +17,12 @@ class Chart extends React.Component {
   async getChart() {
     const cn = await axios.get("http://localhost:5500/getchart");
     const data = cn.data;
-    this.setState({
-      svg: data,
-    },()=>console.log(this.state.svg));
-    
+    this.setState(
+      {
+        svg: data,
+      },
+      () => console.log(this.state.svg)
+    );
   }
   hitChart() {
     this.getChart();
@@ -31,21 +32,21 @@ class Chart extends React.Component {
     return (
       <div className="blink-container">
         <Button
-        startIcon = {<InsertChartIcon/>}
-            color="primary"
-            size="small"
-            variant="contained"
-            onClick={this.hitChart}
-            disabled = {this.props.btnState===-1 ? true : false}
-          >
-            {" "}
-          Chart 
-          </Button>
-          <br />
-          <br />
+          startIcon={<InsertChartIcon />}
+          color="primary"
+          size="small"
+          variant="contained"
+          onClick={this.hitChart}
+          disabled={this.props.btnState === -1 ? true : false}
+        >
+          {" "}
+          Chart
+        </Button>
+        <br />
+        <br />
 
-          <h2>Blink Pattern Chart</h2>
-         {parse(this.state.svg)} 
+        <h2>Blink Pattern Chart</h2>
+        {parse(this.state.svg)}
       </div>
     );
   }
