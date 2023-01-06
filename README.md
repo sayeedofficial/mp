@@ -68,7 +68,7 @@ This Application Helps You to Find Number of Blinks Made Per Minute
  npm install
 ```
 
-# Deployment
+## Deployment
 
 To deploy this project run
 
